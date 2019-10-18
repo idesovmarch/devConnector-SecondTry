@@ -1,6 +1,6 @@
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 
-const ProfileSchema = new mongoose.Schema ({
+const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
@@ -48,7 +48,10 @@ const ProfileSchema = new mongoose.Schema ({
       },
       to: {
         type: Date,
-        required: true,
+      },
+      curent: {
+        type: Boolean,
+        default: false,
       },
     },
   ],
@@ -72,7 +75,10 @@ const ProfileSchema = new mongoose.Schema ({
       },
       to: {
         type: Date,
-        required: true,
+      },
+      curent: {
+        type: Boolean,
+        default: false,
       },
     },
   ],
@@ -99,4 +105,4 @@ const ProfileSchema = new mongoose.Schema ({
   },
 });
 
-module.exports = Profile = mongoose.model ('profile', ProfileSchema);
+module.exports = Profile = mongoose.model('profile', ProfileSchema);

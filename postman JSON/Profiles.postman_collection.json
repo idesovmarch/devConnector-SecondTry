@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "36b3687a-1d13-4d1c-b2ad-29ffe1b016d4",
+		"name": "Profiles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get logged in user's profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRhNzY1OGJlZWM1NjUwOWJhZjc5YTczIn0sImlhdCI6MTU3MTI1MzMzMCwiZXhwIjoxNTcxNjEzMzMwfQ.pOMjP35GQ5uzjO7iDS68nLRzZoQEMOcOpj4Q4Ft4sbA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/profile/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add or Update Profiles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRhOWMxY2I1MTg4NjUxYjgzODQ4MTRjIn0sImlhdCI6MTU3MTQwNjI4MywiZXhwIjoxNTcxNzY2MjgzfQ.bFX3my88jWV5cbH_5nn48_Dj171PKtdDEPCKaOKGkKw",
+						"description": "Brad account token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"company\": \"other\",\n\t\"status\": \"Developer\",\n\t\"website\": \"www.xyz.com\",\n\t\"skills\": \"Html,CSS,PHP,RUBY\",\n\t\"location\": \"Indianapolis, IN\",\n\t\"bio\": \"he's a guy\",\n\t\"githubusername\": \"idesovmarch\",\n\t\"twitter\": \"@idesovmarch\",\n\t\"instagram\": \"@id\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get profile by user ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/profile/user/5da7658beec56509baf79a73",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile",
+						"user",
+						"5da7658beec56509baf79a73"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Profile and User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRhOWMxY2I1MTg4NjUxYjgzODQ4MTRjIn0sImlhdCI6MTU3MTQwNjI4MywiZXhwIjoxNTcxNzY2MjgzfQ.bFX3my88jWV5cbH_5nn48_Dj171PKtdDEPCKaOKGkKw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Experience",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRhNzY1OGJlZWM1NjUwOWJhZjc5YTczIn0sImlhdCI6MTU3MTQxNDI0MCwiZXhwIjoxNTcxNzc0MjQwfQ.nqzE_kSYGLPuCugwv8MTxduRUm13K5LjJkqJht-jgYI",
+						"description": "Brad account token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Person\",\n\t\"company\": \"place\",\n\t\"location\": \"other place\",\n\t\"from\": \"8-10-2010\",\n\t\"current\": true,\n\t\"desciption\": \"hello\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/profile/experience",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile",
+						"experience"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete profile experience",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRhNzY1OGJlZWM1NjUwOWJhZjc5YTczIn0sImlhdCI6MTU3MTQxNTg0MSwiZXhwIjoxNTcxNzc1ODQxfQ.tVoCKiG3ugjTmalMVg4iCXE1cplJ6XCc6SvVshIH2jg",
+						"description": "Brad account token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/profile/experience/5da9e6098ca6bd215ab77481",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile",
+						"experience",
+						"5da9e6098ca6bd215ab77481"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Education",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRhNzY1OGJlZWM1NjUwOWJhZjc5YTczIn0sImlhdCI6MTU3MTQxNDI0MCwiZXhwIjoxNTcxNzc0MjQwfQ.nqzE_kSYGLPuCugwv8MTxduRUm13K5LjJkqJht-jgYI",
+						"description": "Brad account token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Person2\",\n\t\"company\": \"place2\",\n\t\"location\": \"other place2\",\n\t\"from\": \"8-10-2010\",\n\t\"current\": true,\n\t\"desciption\": \"hello\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/profile/experience",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile",
+						"experience"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete profile education",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRhNzY1OGJlZWM1NjUwOWJhZjc5YTczIn0sImlhdCI6MTU3MTQxNTg0MSwiZXhwIjoxNTcxNzc1ODQxfQ.tVoCKiG3ugjTmalMVg4iCXE1cplJ6XCc6SvVshIH2jg",
+						"description": "Brad account token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/profile/education/5da9e6098ca6bd215ab77481",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"profile",
+						"education",
+						"5da9e6098ca6bd215ab77481"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

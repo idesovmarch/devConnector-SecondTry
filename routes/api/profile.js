@@ -4,6 +4,8 @@ const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { check, validationResult } = require('express-validator/check');
+const request = require('request');
+const config = require('config');
 
 // @route GET api/profile/me
 // @desc Get current users profile
@@ -188,15 +190,7 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, company, location, from, to, current, description } = req.body;
 
     const newExp = {
       title,
@@ -232,9 +226,7 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
     const profile = await Profile.findOne({ user: req.user.id });
 
     // Get remove index
-    const removeIndex = profile.experience
-      .map(item => item.id)
-      .indexOf(req.params.exp_id);
+    const removeIndex = profile.experience.map(item => item.id).indexOf(req.params.exp_id);
 
     profile.experience.splice(removeIndex, 1);
 
@@ -276,15 +268,7 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      school,
-      degree,
-      fieldofstudy,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { school, degree, fieldofstudy, from, to, current, description } = req.body;
 
     const newEdu = {
       school,
@@ -320,9 +304,7 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     const profile = await Profile.findOne({ user: req.user.id });
 
     // Get remove index
-    const removeIndex = profile.education
-      .map(item => item.id)
-      .indexOf(req.params.edu_id);
+    const removeIndex = profile.education.map(item => item.id).indexOf(req.params.edu_id);
 
     profile.education.splice(removeIndex, 1);
 
@@ -332,6 +314,36 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Serrver Error');
+  }
+});
+
+// @route GET api/profile/github/:username
+// @desc Get user repos from github
+// @access public
+
+router.get('/github/:username', (req, res) => {
+  try {
+    const options = {
+      uri: `https://api.github.com/users/${
+        req.params.username
+      }/repos?per_page=5&sort=created:asc&client_id=${config.get(
+        'githubClientId'
+      )}&client_secret=${config.get('githubSecret')}`,
+      method: 'GET',
+      headers: { 'user-agent': 'node.js' },
+    };
+
+    request(options, (error, response, body) => {
+      if (error) console.error(error);
+      if (response.statusCode !== 200) {
+        return res.status(404).json({ msg: 'No Github profile found' });
+      }
+
+      res.json(JSON.parse(body));
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Sever Error');
   }
 });
 module.exports = router;
